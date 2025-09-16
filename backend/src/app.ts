@@ -10,7 +10,7 @@ app.use(cookieParser());
 
 
 app.get('/api', (req, res) => {
-  res.send('API is runni');
+  res.send('hello world');
 });
 
 const PORT = process.env.PORT || 4000;
