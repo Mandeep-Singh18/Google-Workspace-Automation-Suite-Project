@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import passport from 'passport';
+import cors from 'cors';
 import { createTables } from './config/db'; // <-- Import the function
 import './config/passport'; // Import to configure passport strategy
 import authRoutes from './routes/authRoutes';
@@ -10,6 +11,12 @@ import taskRoutes from './routes/taskRoutes';
 dotenv.config();
 
 const app = express();
+
+app.use(cors({
+  origin: process.env.FRONTEND_URL, 
+  credentials: true, 
+}));
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(passport.initialize());
